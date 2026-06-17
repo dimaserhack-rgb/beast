@@ -1,0 +1,38 @@
+class monster():
+    def __init__(self, name="Неизвестная тварь", hp = 100, dmg = 10):
+        self.name = name
+        self.hp = hp
+        self.dmg = dmg
+        print(f"Монстр: {name}")
+        print(f"HP: {hp}")
+        print(f"DMG: {dmg}")
+        print("-------------------------------------------")
+
+
+x1, x2, x3 = input("Введите через пробел имя монстра(слитно), хп, урон").split()
+y1, y2, y3 = input("Теперь тоже самое ещё раз, только для второго монстра").split()
+
+m1 = monster(x1, int(x2), int(x3))
+m2 = monster(y1, int(y2), int(y3))
+print("ONE!      TWO!      THREE!")
+print("FIGHT!!!")
+print("---------------------------------------------")
+while True:
+    m2.hp = m2.hp - m1.dmg
+    print(f"{m1.name} Атакует {m2.name}!")
+    print(f"{m2.name} осталось хп: {m2.hp}")
+    print("--------------------------------------------")
+    if m2.hp <= 0:
+        break
+    m1.hp -= m2.dmg
+    print(f"{m2.name} Атакует {m1.name}!")
+    print(f"{m1.name} осталось хп: {m1.hp}")
+    print("--------------------------------------------")
+    if m1.hp <= 0:
+        break
+if m1.hp > 0:
+    print(f"{m2.name} FATALITY!!!")
+    print(f"{m1.name} - WIN!!!")
+else:
+    print(f"{m1.name} FATALITY!!!")
+    print(f"{m2.name} - WIN!!!")
